@@ -98,7 +98,7 @@ copy .env.example .env
 
 4. Update the `.env` file with your credentials:
 ```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/recipe-app
+MONGO_URI=your_mongodb_uri
 SPOONACULAR_API_KEY=your_spoonacular_api_key_here
 PORT=5000
 NODE_ENV=development
@@ -257,13 +257,12 @@ Both frontend and backend use strict TypeScript settings:
 - Check API key is valid
 - Ensure ingredients format is correct (comma-separated)
 
-## 📄 License
-
-MIT
-
 ## 👤 Author
 
-Recipe Sharing App - AI Powered
+Recipe Sharing App
+Contributors:
+Earnest
+Hervish
 
 ## 🙏 Acknowledgments
 
