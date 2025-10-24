@@ -163,7 +163,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
         {/* Image URL */}
         <div>
           <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700 mb-2">
-            Image URL (optional)
+            Recipe Image (optional)
           </label>
           <input
             type="url"
@@ -174,6 +174,19 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
             placeholder="https://example.com/image.jpg"
             disabled={loading}
           />
+          {imageUrl && (
+            <div className="mt-3">
+              <img
+                src={imageUrl}
+                alt="Recipe preview"
+                className="w-full h-48 object-cover rounded-lg border border-gray-300"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Ingredients */}
