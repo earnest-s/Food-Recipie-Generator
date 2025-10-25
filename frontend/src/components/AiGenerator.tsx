@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { generateRecipe } from '../api';
 import { GeneratedRecipe } from '../types';
+import Icon3D from './Icon3D';
 
 interface AiGeneratorProps {
   onRecipeGenerated: (recipe: GeneratedRecipe) => void;
@@ -39,16 +40,17 @@ const AiGenerator: React.FC<AiGeneratorProps> = ({ onRecipeGenerated }) => {
 
   return (
     <div className="card p-6 mb-8">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">
-        🤖 AI Recipe Generator
+      <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+        <Icon3D type="ai" className="w-8 h-8 text-primary-500" />
+        AI Recipe Generator
       </h2>
-      <p className="text-gray-600 mb-4">
+      <p className="text-white mb-4">
         Enter ingredients you have (comma-separated), and let AI create a recipe for you!
       </p>
       
       <form onSubmit={handleGenerate} className="space-y-4">
         <div>
-          <label htmlFor="ingredients" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="ingredients" className="block text-sm font-medium text-white mb-2">
             Ingredients
           </label>
           <input
@@ -60,14 +62,14 @@ const AiGenerator: React.FC<AiGeneratorProps> = ({ onRecipeGenerated }) => {
             className="input-field"
             disabled={loading}
           />
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-300 mt-1">
             Separate multiple ingredients with commas
           </p>
         </div>
 
         {error && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-700 text-sm">{error}</p>
+          <div className="p-4 bg-red-900/20 border border-red-800 rounded-lg">
+            <p className="text-red-400 text-sm">{error}</p>
           </div>
         )}
 
@@ -85,7 +87,10 @@ const AiGenerator: React.FC<AiGeneratorProps> = ({ onRecipeGenerated }) => {
               Generating Recipe...
             </span>
           ) : (
-            '✨ Generate Recipe'
+            <span className="flex items-center justify-center gap-2">
+              <Icon3D type="ai" className="w-5 h-5" />
+              Generate Recipe
+            </span>
           )}
         </button>
       </form>

@@ -8,7 +8,7 @@ import RecipeDetail from './pages/RecipeDetail';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-black">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

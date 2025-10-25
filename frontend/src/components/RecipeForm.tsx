@@ -123,14 +123,14 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
 
   return (
     <div className="card p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+      <h2 className="text-2xl font-bold mb-6 text-white">
         {initialRecipe?._id ? 'Edit Recipe' : 'Create New Recipe'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Title */}
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="title" className="block text-sm font-medium text-white mb-2">
             Recipe Title *
           </label>
           <input
@@ -146,7 +146,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
 
         {/* Cuisine */}
         <div>
-          <label htmlFor="cuisine" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="cuisine" className="block text-sm font-medium text-white mb-2">
             Cuisine Type *
           </label>
           <input
@@ -162,7 +162,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
 
         {/* Image URL */}
         <div>
-          <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="imageUrl" className="block text-sm font-medium text-white mb-2">
             Recipe Image (optional)
           </label>
           <input
@@ -179,7 +179,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
               <img
                 src={imageUrl}
                 alt="Recipe preview"
-                className="w-full h-48 object-cover rounded-lg border border-gray-300"
+                className="w-full h-48 object-cover rounded-lg border border-gray-600"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -191,7 +191,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
 
         {/* Ingredients */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             Ingredients *
           </label>
           {ingredients.map((ingredient, index) => (
@@ -234,12 +234,12 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
 
         {/* Steps */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             Preparation Steps *
           </label>
           {steps.map((step, index) => (
             <div key={index} className="flex gap-2 mb-2">
-              <span className="pt-2 text-gray-500 font-medium">{index + 1}.</span>
+              <span className="pt-2 text-gray-400 font-medium">{index + 1}.</span>
               <textarea
                 value={step}
                 onChange={(e) => handleStepChange(index, e.target.value)}
@@ -275,18 +275,18 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ initialRecipe, onSaved, onCance
             id="isPublic"
             checked={isPublic}
             onChange={(e) => setIsPublic(e.target.checked)}
-            className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+            className="w-4 h-4 text-primary-500 border-gray-600 rounded focus:ring-primary-500 bg-gray-700"
             disabled={loading}
           />
-          <label htmlFor="isPublic" className="ml-2 text-sm text-gray-700">
+          <label htmlFor="isPublic" className="ml-2 text-sm text-white">
             Make this recipe public
           </label>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-700 text-sm">{error}</p>
+          <div className="p-4 bg-red-900/20 border border-red-800 rounded-lg">
+            <p className="text-red-400 text-sm">{error}</p>
           </div>
         )}
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllRecipes } from '../api';
 import { Recipe } from '../types';
 import RecipeCard from '../components/RecipeCard';
+import Icon3D from '../components/Icon3D';
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -44,10 +45,10 @@ const Home: React.FC = () => {
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
           Discover Amazing Recipes
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
           Create, share, and explore delicious recipes powered by AI.
           Turn your ingredients into culinary masterpieces!
         </p>
@@ -62,34 +63,22 @@ const Home: React.FC = () => {
               placeholder="Search recipes by title, cuisine, or ingredients..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-4 pl-12 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all shadow-sm"
+              className="w-full px-6 py-4 pl-14 text-lg bg-gray-800 border border-gray-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all shadow-lg text-white placeholder-gray-400"
             />
-            <svg
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <Icon3D type="search" className="w-6 h-6" />
+            </div>
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-200"
               >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <Icon3D type="close" className="w-5 h-5" />
               </button>
             )}
           </div>
           {searchQuery && (
-            <p className="text-sm text-gray-600 mt-2 text-center">
+            <p className="text-sm text-white mt-2 text-center">
               Found {filteredRecipes.length} recipe{filteredRecipes.length !== 1 ? 's' : ''} matching "{searchQuery}"
             </p>
           )}
@@ -99,11 +88,11 @@ const Home: React.FC = () => {
       {/* Content */}
       {loading ? (
         <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary-600"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary-500"></div>
         </div>
       ) : error ? (
         <div className="card p-8 text-center">
-          <p className="text-red-600 text-lg">{error}</p>
+          <p className="text-red-400 text-lg">{error}</p>
           <button
             onClick={fetchRecipes}
             className="btn-primary mt-4"
@@ -113,7 +102,7 @@ const Home: React.FC = () => {
         </div>
       ) : recipes.length === 0 ? (
         <div className="card p-12 text-center">
-          <p className="text-gray-600 text-lg mb-4">
+          <p className="text-white text-lg mb-4">
             No recipes yet. Be the first to create one!
           </p>
           <a href="/create" className="btn-primary inline-block">
@@ -122,7 +111,7 @@ const Home: React.FC = () => {
         </div>
       ) : filteredRecipes.length === 0 && searchQuery ? (
         <div className="card p-12 text-center">
-          <p className="text-gray-600 text-lg mb-4">
+          <p className="text-white text-lg mb-4">
             No recipes found matching "{searchQuery}". Try a different search term!
           </p>
           <button
@@ -134,7 +123,7 @@ const Home: React.FC = () => {
         </div>
       ) : (
         <>
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          <h2 className="text-2xl font-bold text-white mb-6">
             {searchQuery ? `Search Results (${filteredRecipes.length})` : `All Recipes (${recipes.length})`}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

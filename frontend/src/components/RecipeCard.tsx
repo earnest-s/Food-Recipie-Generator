@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Recipe } from '../types';
+import Icon3D from './Icon3D';
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -23,16 +24,17 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
         />
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2 truncate">
+        <h3 className="text-xl font-semibold text-white mb-2 truncate">
           {recipe.title}
         </h3>
-        <div className="flex items-center justify-between text-sm text-gray-600">
-          <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full">
+        <div className="flex items-center justify-between text-sm text-gray-300">
+          <span className="bg-primary-900 text-primary-300 px-3 py-1 rounded-full">
             {recipe.cuisine}
           </span>
           {recipe.source === 'ai-generated' && (
-            <span className="flex items-center gap-1">
-              🤖 <span>AI</span>
+            <span className="flex items-center gap-1 bg-purple-900 text-purple-300 px-3 py-1 rounded-full">
+              <Icon3D type="ai" className="w-4 h-4" />
+              <span>AI</span>
             </span>
           )}
         </div>

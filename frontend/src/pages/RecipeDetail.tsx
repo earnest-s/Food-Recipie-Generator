@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipeById } from '../api';
 import { Recipe } from '../types';
+import Icon3D from '../components/Icon3D';
 
 const RecipeDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -46,7 +47,7 @@ const RecipeDetail: React.FC = () => {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="card p-8 text-center">
-          <p className="text-red-600 text-lg mb-4">{error || 'Recipe not found'}</p>
+          <p className="text-red-600 dark:text-red-400 text-lg mb-4">{error || 'Recipe not found'}</p>
           <button
             onClick={() => navigate('/')}
             className="btn-primary"
@@ -87,20 +88,21 @@ const RecipeDetail: React.FC = () => {
           {/* Title and Meta */}
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-2">
-              <span className="bg-primary-100 text-primary-700 px-4 py-1 rounded-full text-sm font-medium">
+              <span className="bg-primary-900 text-primary-300 px-4 py-1 rounded-full text-sm font-medium">
                 {recipe.cuisine}
               </span>
               {recipe.source === 'ai-generated' && (
-                <span className="bg-purple-100 text-purple-700 px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                  🤖 AI Generated
+                <span className="bg-purple-900 text-purple-300 px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                  <Icon3D type="ai" className="w-5 h-5" />
+                  AI Generated
                 </span>
               )}
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-4xl font-bold text-white mb-2">
               {recipe.title}
             </h1>
             {recipe.createdAt && (
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-300 text-sm">
                 Created {new Date(recipe.createdAt).toLocaleDateString()}
               </p>
             )}
@@ -108,18 +110,19 @@ const RecipeDetail: React.FC = () => {
 
           {/* Ingredients */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-              🥗 Ingredients
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <Icon3D type="recipe" className="w-7 h-7 text-primary-500" />
+              Ingredients
             </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="bg-gray-700/50 rounded-lg p-6">
               <ul className="space-y-2">
                 {recipe.ingredients.map((ingredient, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-primary-600 font-bold">•</span>
+                    <span className="text-primary-400 font-bold">•</span>
                     <span className="flex-1">
-                      <span className="font-medium">{ingredient.name}</span>
+                      <span className="font-medium text-white">{ingredient.name}</span>
                       {' — '}
-                      <span className="text-gray-600">{ingredient.quantity}</span>
+                      <span className="text-gray-300">{ingredient.quantity}</span>
                     </span>
                   </li>
                 ))}
@@ -129,16 +132,17 @@ const RecipeDetail: React.FC = () => {
 
           {/* Steps */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-              👨‍🍳 Preparation Steps
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <Icon3D type="chef" className="w-7 h-7 text-primary-500" />
+              Preparation Steps
             </h2>
             <div className="space-y-4">
               {recipe.steps.map((step, index) => (
                 <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
-                  <p className="flex-1 text-gray-700 pt-1">{step}</p>
+                  <p className="flex-1 text-gray-300 pt-1">{step}</p>
                 </div>
               ))}
             </div>
