@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
           <Link to="/" className="flex items-center space-x-3">
             <Icon3D type="chef" className="w-8 h-8 text-primary-500" />
             <span className="text-xl font-bold text-gray-100">
-              Recipe<span className="text-primary-500">AI</span>
+              Food<span className="text-primary-500">Legion</span>
             </span>
           </Link>
           

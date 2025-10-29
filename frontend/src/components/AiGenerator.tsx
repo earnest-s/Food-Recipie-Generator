@@ -42,10 +42,10 @@ const AiGenerator: React.FC<AiGeneratorProps> = ({ onRecipeGenerated }) => {
     <div className="card p-6 mb-8">
       <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-2">
         <Icon3D type="ai" className="w-8 h-8 text-primary-500" />
-        AI Recipe Generator
+        FoodLegion AI
       </h2>
       <p className="text-white mb-4">
-        Enter ingredients you have (comma-separated), and let AI create a recipe for you!
+        Enter ingredients you have (comma-separated), and let FoodLegion create a recipe for you!
       </p>
       
       <form onSubmit={handleGenerate} className="space-y-4">
