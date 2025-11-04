@@ -261,8 +261,8 @@ Both frontend and backend use strict TypeScript settings:
 
 Recipe Sharing App
 Contributors:
-Earnest
-Hervish
+Earnest S
+Hervish W
 
 ## 🙏 Acknowledgments
 
